@@ -1,5 +1,8 @@
 package com.project.Springbootfullapp.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author RAJA
  *
@@ -9,6 +12,7 @@ public class ResultBean {
 
 	private String result;
 	private String message;
+	private Map<String, String> errorMessages = new HashMap<String, String>();
 
 	/**
 	 * @param result
@@ -26,6 +30,18 @@ public class ResultBean {
 		super();
 		this.result = result;
 		this.message = message;
+	}
+
+	/**
+	 * @param result
+	 * @param message
+	 * @param errorMessages
+	 */
+	public ResultBean(String result, String message, Map<String, String> errorMessages) {
+		super();
+		this.result = result;
+		this.message = message;
+		this.errorMessages = errorMessages;
 	}
 
 	/**
@@ -54,6 +70,20 @@ public class ResultBean {
 	 */
 	public void setResult(String result) {
 		this.result = result;
+	}
+
+	/**
+	 * @return the errorMessages
+	 */
+	public Map<String, String> getErrorMessages() {
+		return errorMessages;
+	}
+
+	/**
+	 * @param errorMessages the errorMessages to set
+	 */
+	public void setErrorMessages(Map<String, String> errorMessages) {
+		this.errorMessages = errorMessages;
 	}
 
 }

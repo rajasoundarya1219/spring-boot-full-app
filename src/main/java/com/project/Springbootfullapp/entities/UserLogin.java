@@ -9,8 +9,13 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.DynamicUpdate;
+
+import com.project.Springbootfullapp.checks.UserCreationChecks;
+import com.project.Springbootfullapp.custom.annotations.ValidPassword;
 
 /**
  * @author RAJA
@@ -22,21 +27,33 @@ import org.hibernate.annotations.DynamicUpdate;
 public class UserLogin {
 
 	@Id
+	@NotEmpty(message = "userLoginId.empty.errorMsg", groups = { UserCreationChecks.class })
+	@Email(message = "userLoginId.invalid.errorMsg", groups = { UserCreationChecks.class })
 	private String userLoginId;
+
 	@Column
+	@NotEmpty(message = "password.empty.errorMsg", groups = { UserCreationChecks.class })
+	@ValidPassword(message = "password.invalid.errorMsg", groups = { UserCreationChecks.class })
 	private String password;
+
 	@Column
 	private Timestamp createdTimestamp;
+
 	@Column
 	private boolean isActive;
+
 	@Column
 	private String firstName;
+
 	@Column
 	private String lastName;
+
 	@Column
 	private String mobileNumber;
+
 	@Column
 	private Date dateOfBirth;
+
 	@Column
 	private String linkedinUrl;
 
